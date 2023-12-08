@@ -1,0 +1,16 @@
+---
+// import '../styles/global.css';
+import Head from "./Head.astro";
+
+const { title, desc } = Astro.props;
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <Head title={title} desc={desc} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

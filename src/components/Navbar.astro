@@ -1,0 +1,23 @@
+---
+import { Image } from "astro:assets";
+---
+
+<div
+  class="bg-white drop-shadow-md flex flex-row justify-between w-full items-center py-3 px-5 gap-5 rounded-b-2xl"
+>
+  <input
+    type="text"
+    placeholder="Mau pergi kemana hari ini?"
+    class="input input-sm p-5 py-6 input-bordered w-full"
+  />
+  <a class="w-12" href={"/profile"}>
+    <Image
+      width={200}
+      height={200}
+      format="avif"
+      class="w-auto rounded-full click"
+      src="https://avatars.githubusercontent.com/u/93970726?v=4"
+      alt=""
+    />
+  </a>
+</div>

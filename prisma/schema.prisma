@@ -1,0 +1,95 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String    @id @unique @default(uuid())
+  username    String?   @unique
+  email       String?   @unique
+  phoneNumber String?   @unique
+  password    String?
+  userType    UserType? @default(CUSTOMER)
+  account     Account?
+}
+
+model Account {
+  id String @id @unique @default(uuid())
+
+  saldo String? @default("0")
+
+  history_ngojek   HistoryNgojek[]
+  history_topup    HistoryTopUp[]
+  history_transfer HistoryTransfer[]
+
+  favorit Favorit[]
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @unique
+}
+
+model HistoryNgojek {
+  id String @id @unique @default(uuid())
+
+  history_type HistoryType?
+  title        String?
+  driver       String?
+  payment      String?
+  price        String?
+  order_time   String?
+
+  user   Account @relation(fields: [userId], references: [id])
+  userId String  @unique
+}
+
+model HistoryTopUp {
+  id String @id @unique @default(uuid())
+
+  history_type HistoryType?
+  price        String?
+  person       String?
+  payment      String?
+  order_time   String?
+
+  user   Account @relation(fields: [userId], references: [id])
+  userId String  @unique
+}
+
+model HistoryTransfer {
+  id String @id @unique @default(uuid())
+
+  history_type HistoryType?
+  price        String?
+  person       String?
+  order_time   String?
+
+  user   Account @relation(fields: [userId], references: [id])
+  userId String  @unique
+}
+
+model Favorit {
+  id String @id @unique @default(uuid())
+
+  title   String?
+  address String?
+  image   String?
+
+  user   Account @relation(fields: [userId], references: [id])
+  userId String  @unique
+}
+
+enum UserType {
+  CUSTOMER
+  DRIVER
+}
+
+enum HistoryType {
+  MOTOR
+  MOBIL
+  TOPUP
+  TRANSFER
+}

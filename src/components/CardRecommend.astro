@@ -1,0 +1,22 @@
+---
+
+---
+
+<div class="flex flex-col m-4 my-0">
+    <div class="flex flex-row items-center justify-between">
+        <div class="flex flex-col justify-start">
+            <h1 class="font-bold tracking-wide">Rekomendasi buatmu</h1>
+            <h1 class="text-[13px]">Tempat wisata yang ciamik 💖</h1>
+        </div>
+    </div>
+    <div class="flex flex-row gap-3 overflow-x-auto py-5">
+        {[...new Array(12)].map(() => (
+            <div class={`flex flex-col rounded-2xl h-52 bg-[url('/bg/wisata-2.webp')] bg-center relative min-w-full`}>
+                <div class="rounded-2xl bg-gradient-to-b from-gray-50/0 via-gray-500/80 to-gray-800 absolute top-0 z-[1] h-full w-full flex flex-col p-4 text-white justify-end">
+                    <h1 class="font-[poppins] font-bold text-2xl">Taman Pelangi</h1>
+                    <p>Jl. Slamet riyadi No. 0, Jatisari, Indonesia, Negara Kita</p>
+                </div>
+            </div>
+        ))}
+    </div>
+</div>
